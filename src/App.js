@@ -3,6 +3,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Counter from './pages/counter';
 import Modal from './pages/modal';
+import Layout from './pages/layout';
+import NoPage from './pages/nopage';
 
 function App() {
   return (
@@ -10,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Counter />} />
-          <Route path={modal} element={<Modal />} />
+          <Route path="modal" element={<Modal />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

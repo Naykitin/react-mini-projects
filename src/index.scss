@@ -6,3 +6,40 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #edf6f9;
 }
+
+#root {
+  display: flex;
+
+  nav {
+    width: 20%;
+    border-right: 1px solid rgb(209, 209, 209);
+
+    ul {
+      list-style: none;
+      padding: 0 20px;
+
+      li {
+        margin: 10px 0 0;
+
+        a {
+          display: block;
+          text-decoration: none;
+          color: #222;
+          font-weight: 600;
+          padding: 15px 10px;
+          border-radius: 10px;
+          transition: .2s all;
+
+          &.active {
+            background-color: rgb(35, 85, 160);
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  > div {
+    width: 80%;
+  }
+}

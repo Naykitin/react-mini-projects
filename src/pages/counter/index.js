@@ -1,7 +1,7 @@
-import '/index.scss';
+import './index.scss';
 import React from 'react';
 
-function App() {
+function Counter() {
 
   const [count, setCount] = React.useState(0);
 
@@ -13,7 +13,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="counterApp">
       <div>
         <h2>Counter:</h2>
         <h1>{count}</h1>
@@ -24,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default Counter;

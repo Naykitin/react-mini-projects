@@ -6,7 +6,7 @@ function App() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="App">
+    <div className="modalApp">
       <button className="open-modal-btn" onClick={() => setOpen(true)}>✨ Open modal</button>
       <div className={`overlay animated ${open ? 'show' : ''}`}>
         <div className="modal">
