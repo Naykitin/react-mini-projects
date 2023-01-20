@@ -5,6 +5,7 @@ import Counter from './pages/counter';
 import Modal from './pages/modal';
 import Layout from './pages/layout';
 import NoPage from './pages/nopage';
+import Quiz from './pages/quiz';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Counter />} />
           <Route path="modal" element={<Modal />} />
+          <Route path="quiz" element={<Quiz />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
