@@ -7,6 +7,7 @@ import Layout from './pages/layout';
 import NoPage from './pages/nopage';
 import Quiz from './pages/quiz';
 import Invitation from './pages/invitation';
+import Todolist from './pages/todolist';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="modal" element={<Modal />} />
           <Route path="quiz" element={<Quiz />} />
           <Route path="invitation" element={<Invitation />} />
+          <Route path="todolist" element={<Todolist />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
