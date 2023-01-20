@@ -15,6 +15,9 @@ function Layout() {
             <li>
                <NavLink to="/quiz">Quiz</NavLink>
             </li>
+            <li>
+               <NavLink to="/invitation">Invitation</NavLink>
+            </li>
          </ul>
       </nav>
 
