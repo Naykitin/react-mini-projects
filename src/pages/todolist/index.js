@@ -3,14 +3,25 @@ import './index.scss';
 
 function Todolist() {
 
-   const [list, setList] = React.useState(['test', 'test1']);
+   const [list, setList] = React.useState(['Learn React', 'Create to-do-list']);
+   const [newList, setNewList] = React.useState();
+
+   const onInput = (event) => {
+      setNewList([event.target.value])
+
+   }
+
+   const addToList = () => {
+      setList(oldArray => [...oldArray, newList]);
+      setNewList('');
+   }
 
   return (
     <div>
       <div className='todolistApp'>
          <div className='head'>
-            <input />
-            <button>Add</button>
+            <input onChange={onInput} value={newList}/>
+            <button onClick={addToList}>Add</button>
          </div>
          <ul className='list'>
             {

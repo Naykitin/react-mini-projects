@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Counter from './pages/counter';
 import Modal from './pages/modal';
 import Layout from './pages/layout';
-import NoPage from './pages/nopage';
+import NoPage from './pages/nopage/NoPage';
 import Quiz from './pages/quiz';
 import Invitation from './pages/invitation';
 import Todolist from './pages/todolist';
