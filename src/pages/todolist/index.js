@@ -5,15 +5,21 @@ function Todolist() {
 
    const [list, setList] = React.useState(['Learn React', 'Create to-do-list']);
    const [newList, setNewList] = React.useState();
+   const [disabled, setDisabled] = React.useState(true);
 
    const onInput = (event) => {
-      setNewList([event.target.value])
-
+      setNewList([event.target.value]);
+      if (event.target.value == '') {
+         setDisabled(true);
+      } else {
+         setDisabled(false);
+      }
    }
 
    const addToList = () => {
       setList(oldArray => [...oldArray, newList]);
       setNewList('');
+      setDisabled(true);
    }
 
   return (
@@ -21,12 +27,12 @@ function Todolist() {
       <div className='todolistApp'>
          <div className='head'>
             <input onChange={onInput} value={newList}/>
-            <button onClick={addToList}>Add</button>
+            <button disabled={disabled} onClick={addToList}>Add</button>
          </div>
          <ul className='list'>
             {
                list.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <li key={index}>{item}<div></div></li>
                ))
             }
          </ul>
