@@ -45,12 +45,23 @@
       flex-direction: column;
       gap: 10px;
       padding: 0 30px;
+      list-style: none;
 
       li {
          position: relative;
          font-size: 20px;
 
-         div {
+         .completed {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translate(0, -50%);
+            width: 20px;
+            height: 20px;
+            margin: 0;
+         }
+
+         .delete {
             position: absolute;
             top: 50%;
             right: -30px;
