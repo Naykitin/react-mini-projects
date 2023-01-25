@@ -18,14 +18,13 @@ function Todolist() {
 
    React.useEffect(() => {
       const data = window.localStorage.getItem('MY_NEW_LIST');
-      console.log(data);
-      if ( data !== null ) setList(JSON.parse(data));
+      setList(JSON.parse(data));
    }, []);
-
+   
    React.useEffect(() => {
       window.localStorage.setItem('MY_NEW_LIST', JSON.stringify(list))
    }, [list]);
-      
+
    const [input, setInput] = React.useState('');
    const [disabled, setDisabled] = React.useState(false);
 
@@ -53,27 +52,30 @@ function Todolist() {
    }
 
    const onChecked = (item) => {
-      item.completed = !item.completed;
+      const updatedList = list[item.id - 1].completed = !item.completed;
+      setList(list.filter((obj) => obj.completed !== updatedList.completed));
    }
 
   return (
-   <div className='todolistApp'>
-      <div className='head'>
-         <input onChange={onInput} value={input}/>
-         <button disabled={disabled} onClick={addToList}>Add</button>
+      <div>
+         <div className='todolistApp'>
+            <div className='head'>
+               <input onChange={onInput} value={input}/>
+               <button disabled={disabled} onClick={addToList}>Add</button>
+            </div>
+            <ul className='list'>
+               {
+                  list.map((item) => (
+                     <li key={item.id} className={`${item.completed ? 'checked' : ''}`}>
+                        <div className={`checkbox ${item.completed ? 'checked' : ''}`} onClick={() =>  onChecked(item)}></div>
+                        {item.text}
+                        <div className='delete' onClick={() => deleteItem(item)}></div>
+                     </li>
+                  ))
+               }
+            </ul>
+         </div>
       </div>
-      <ul className='list'>
-         {
-            list.map((item) => (
-               <li key={item.id}>
-                  <input className='completed' type="checkbox" onClick={() => onChecked(item)} />
-                  {item.text}
-                  <div className='delete' onClick={() => deleteItem(item)}></div>
-               </li>
-            ))
-         }
-      </ul>
-   </div>
   )
 }
 

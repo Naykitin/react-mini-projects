@@ -50,8 +50,9 @@
       li {
          position: relative;
          font-size: 20px;
+         transition: .2s all;
 
-         .completed {
+         .checkbox {
             position: absolute;
             left: -30px;
             top: 50%;
@@ -59,6 +60,18 @@
             width: 20px;
             height: 20px;
             margin: 0;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            transition: .2s all;
+
+            &.checked {
+               border-color: rgb(40, 170, 96);
+               background-image: url('../../../public/assets/success.svg');
+            }
+         }
+
+         &.checked {
+            text-decoration: line-through;
          }
 
          .delete {
