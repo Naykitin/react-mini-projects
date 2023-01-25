@@ -14,10 +14,7 @@ function Todolist() {
             text: 'Create to-do-list',
             completed: false
          }
-      ]);
-      
-   const [input, setInput] = React.useState('');
-   const [disabled, setDisabled] = React.useState(false);
+   ]);
 
    React.useEffect(() => {
       const data = window.localStorage.getItem('MY_NEW_LIST');
@@ -28,14 +25,17 @@ function Todolist() {
    React.useEffect(() => {
       window.localStorage.setItem('MY_NEW_LIST', JSON.stringify(list))
    }, [list]);
+      
+   const [input, setInput] = React.useState('');
+   const [disabled, setDisabled] = React.useState(false);
 
    const onInput = (event) => {
       setInput(event.target.value);
-      // if (event.target.value === '') {
-      //    setDisabled(true);
-      // } else {
-      //    setDisabled(false);
-      // }
+      if (event.target.value === '') {
+         setDisabled(true);
+      } else {
+         setDisabled(false);
+      }
    }
 
    const addToList = () => {
@@ -45,7 +45,7 @@ function Todolist() {
          completed: false
       }]);
       setInput('');
-      // setDisabled(true);
+      setDisabled(true);
    }
 
    const deleteItem = (item) => {
