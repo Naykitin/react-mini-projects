@@ -57,25 +57,23 @@ function Todolist() {
    }
 
   return (
-    <div>
-      <div className='todolistApp'>
-         <div className='head'>
-            <input onChange={onInput} value={input}/>
-            <button disabled={disabled} onClick={addToList}>Add</button>
-         </div>
-         <ul className='list'>
-            {
-               list.map((item) => (
-                  <li key={item.id}>
-                     <input className='completed' type="checkbox" onClick={() => onChecked(item)} />
-                     {item.text}
-                     <div className='delete' onClick={() => deleteItem(item)}></div>
-                  </li>
-               ))
-            }
-         </ul>
+   <div className='todolistApp'>
+      <div className='head'>
+         <input onChange={onInput} value={input}/>
+         <button disabled={disabled} onClick={addToList}>Add</button>
       </div>
-    </div>
+      <ul className='list'>
+         {
+            list.map((item) => (
+               <li key={item.id}>
+                  <input className='completed' type="checkbox" onClick={() => onChecked(item)} />
+                  {item.text}
+                  <div className='delete' onClick={() => deleteItem(item)}></div>
+               </li>
+            ))
+         }
+      </ul>
+   </div>
   )
 }
 
