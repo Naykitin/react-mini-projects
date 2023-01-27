@@ -19,6 +19,7 @@ function Todolist() {
    const [disabled, setDisabled] = React.useState(true);
    const [edit, setEdit] = React.useState('');
    const [editedList, setEditedList] = React.useState('');
+   const [overlayTrigger, setOverlayTrigger] = React.useState(false)
 
    React.useEffect(() => {
       const data = window.localStorage.getItem('MY_NEW_LIST');
@@ -80,6 +81,7 @@ function Todolist() {
 
    const editItemButton = (item) => {
       setEdit([item.id, item.text]);
+      setOverlayTrigger(true);
    }
 
    const editInput = (event) => {
@@ -111,7 +113,8 @@ function Todolist() {
                   ))
                }
             </ul>
-            { (list.length !== 0) ? 
+            { 
+               (list.length !== 0) ? 
                (
                   <div className='footer'>
                      <button onClick={deleteDoneTasks}>Delete done tasks</button>
@@ -119,10 +122,14 @@ function Todolist() {
                   </div>
                ) : (null)
             }
-            <div className='editModal'>
-               <input onChange={editInput} value={edit[1]} />
-               <button onClick={editTask}>Update task</button>
+            <div className={`overlayModal ${overlayTrigger ? 'show' : ''}`}>
+               <div className='editModal'>
+                  <input onChange={editInput} value={edit[1]} />
+                  <button onClick={editTask}>Update task</button>
+                  <svg height="200" viewBox="0 0 200 200" width="200"><title></title><path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z"></path></svg>
+               </div>
             </div>
+            
          </div>
       </div>
   )
