@@ -19,7 +19,7 @@ function Todolist() {
    const [disabled, setDisabled] = React.useState(true);
    const [edit, setEdit] = React.useState('');
    const [editedList, setEditedList] = React.useState('');
-   const [overlayTrigger, setOverlayTrigger] = React.useState(false)
+   const [overlayTrigger, setOverlayTrigger] = React.useState(false);
 
    React.useEffect(() => {
       const data = window.localStorage.getItem('MY_NEW_LIST');
@@ -66,8 +66,10 @@ function Todolist() {
    }
 
    const onChecked = (item) => {
-      const updatedList = list[item.id - 1].completed = !item.completed;
-      setList(list.filter((obj) => obj.completed !== updatedList.completed));
+      const updatedList = list.find(obj => obj.id === item.id);
+      // setList(list.filter((obj) => obj.completed !== updatedList.completed));
+      console.log(list.filter((obj) => obj.completed !== updatedList.completed));
+      console.log(updatedList.completed === !updatedList.completed);
    }
 
    const deleteDoneTasks = () => {
@@ -93,6 +95,15 @@ function Todolist() {
       setList(list.filter((obj) => obj.text !== editedList.text));
       setEdit([]);
       setOverlayTrigger(false);
+   }
+
+   const editKeyDown = (event) => {
+      if (event.key === 'Enter') {
+         setEditedList(list[edit[0] - 1].text = edit[1]);
+         setList(list.filter((obj) => obj.text !== editedList.text));
+         setEdit([]);
+         setOverlayTrigger(false);
+      }
    }
 
   return (
@@ -125,7 +136,7 @@ function Todolist() {
             }
             <div className={`overlayModal ${overlayTrigger ? 'show' : ''}`}>
                <div className='editModal'>
-                  <input onChange={editInput} value={edit[1]} />
+                  <input onChange={editInput} onKeyDown={editKeyDown} value={edit[1]} />
                   <button onClick={editTask}>Update task</button>
                   <svg height="200" viewBox="0 0 200 200" width="200" onClick={() => setOverlayTrigger(false)}>
                   <title />
