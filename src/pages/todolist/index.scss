@@ -172,7 +172,7 @@
          display: flex;
          gap: 30px;
          justify-content: space-between;
-         padding: 45px 15px 30px;
+         padding: 45px 15px 20px;
          background: #fff;
          border-radius: 15px;
          transition: .3s all;
@@ -210,6 +210,11 @@
             width: 24px;
             opacity: 0.3;
             cursor: pointer;
+            transition: .2s all;
+
+            &:hover {
+               opacity: 1;
+             }
          }
       }
 
