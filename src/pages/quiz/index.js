@@ -3,21 +3,21 @@ import './index.scss';
 
 const questions = [
   {
-    title: 'React - это ... ?',
-    variants: ['библиотека', 'фреймворк', 'приложение'],
+    title: 'React is ... ? ',
+    variants: ['library', 'framework', 'application'],
     correct: 0,
   },
   {
-    title: 'Компонент - это ... ',
-    variants: ['приложение', 'часть приложения или страницы', 'то, что я не знаю что такое'],
+    title: 'The component is ... ',
+    variants: ['application', 'part of an application or page', 'what I do not know what is'],
     correct: 1,
   },
   {
-    title: 'Что такое JSX?',
+    title: 'What is JSX?',
     variants: [
-      'Это простой HTML',
-      'Это функция',
-      'Это тот же HTML, но с возможностью выполнять JS-код',
+      'This is plain HTML',
+      'This is a function',
+      'This is the same HTML, but with the ability to execute JS code',
     ],
     correct: 2,
   },
@@ -27,8 +27,8 @@ function Result({ tryAgain, correct }) {
   return (
     <div className="result">
       <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" />
-      <h2>Вы отгадали {correct} ответа из {questions.length}</h2>
-      <button onClick={tryAgain}>Попробовать снова</button>
+      <h2>You guessed {correct} answers out of {questions.length} answers!</h2>
+      <button onClick={tryAgain}>Try again</button>
     </div>
   );
 }

@@ -168,3 +168,9 @@
     transform: scale(1);
   }
 }
+@media (max-width: 768px) {
+  .invitationApp {
+     padding: 20px;
+     width: 350px;
+  }
+}

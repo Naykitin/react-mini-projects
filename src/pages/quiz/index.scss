@@ -94,4 +94,17 @@
      }
    }
  }
- 
+ @media (max-width: 768px) {
+  .quizApp {
+     padding: 40px 20px;
+     width: 350px;
+
+     &:before {
+      bottom: -20px;
+    }
+  
+    &:after {
+      bottom: -30px;
+    }
+  }
+}
