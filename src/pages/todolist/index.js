@@ -66,10 +66,13 @@ function Todolist() {
    }
 
    const onChecked = (item) => {
-      const updatedList = list.find(obj => obj.id === item.id);
-      // setList(list.filter((obj) => obj.completed !== updatedList.completed));
-      console.log(list.filter((obj) => obj.completed !== updatedList.completed));
-      console.log(updatedList.completed === !updatedList.completed);
+      const updatedList = list.map(obj => {
+         if (obj.id === item.id) {
+           return {...obj, completed: !obj.completed};
+         }
+         return obj;
+       });
+       setList(updatedList);
    }
 
    const deleteDoneTasks = () => {
