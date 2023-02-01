@@ -116,18 +116,22 @@ function Todolist() {
                <input onKeyDown={handleKeyDown} form="test" onChange={onInput} value={input}/>
                <button disabled={disabled} onClick={addToList}>Add</button>
             </div>
-            <ul className='list'>
-               {
-                  list.map((item) => (
-                     <li key={item.id} className={`${item.completed ? 'checked' : ''}`}>
-                        <div className={`checkbox ${item.completed ? 'checked' : ''}`} onClick={() =>  onChecked(item)}></div>
-                        <div className='listText'>{item.text}</div>
-                        <div className='edit' onClick={() => editItemButton(item)}></div>
-                        <div className='delete' onClick={() => deleteItem(item)}></div>
-                     </li>
-                  ))
-               }
-            </ul>
+            {
+               (list.length !== 0) ? 
+               (<ul className='list'>
+                  {
+                     list.map((item) => (
+                        <li key={item.id} className={`${item.completed ? 'checked' : ''}`}>
+                           <div className={`checkbox ${item.completed ? 'checked' : ''}`} onClick={() =>  onChecked(item)}></div>
+                           <div className='listText'>{item.text}</div>
+                           <div className='edit' onClick={() => editItemButton(item)}></div>
+                           <div className='delete' onClick={() => deleteItem(item)}></div>
+                        </li>
+                     ))
+                  }
+               </ul>
+               ) : (null)
+            }
             { 
                (list.length !== 0) ? 
                (
