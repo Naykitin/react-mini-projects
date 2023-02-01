@@ -1,26 +1,28 @@
 import './index.scss';
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Counter from './pages/counter';
+import Modal from './pages/modal';
+import Layout from './pages/layout';
+import NoPage from './pages/nopage/NoPage';
+import Quiz from './pages/quiz';
+import Invitation from './pages/invitation';
+import Todolist from './pages/todolist';
 
 function App() {
-
-  const [count, setCount] = React.useState(0);
-
-  const onPlus = () => {
-    setCount(count + 1);
-  }
-  const onMinus = () => {
-    setCount(count - 1);
-  }
-
   return (
-    <div className="App">
-      <div>
-        <h2>Counter:</h2>
-        <h1>{count}</h1>
-        <button className="minus" onClick={onMinus}>- Minus</button>
-        <button className="plus" onClick={onPlus}>Plus +</button>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Counter />} />
+          <Route path="modal" element={<Modal />} />
+          <Route path="quiz" element={<Quiz />} />
+          <Route path="invitation" element={<Invitation />} />
+          <Route path="todolist" element={<Todolist />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
